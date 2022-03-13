@@ -13,9 +13,9 @@ class Currency:
     difference = 1
 
     def __init__(self):
-        self.current_convert_price = float(self.get_currency_price().replace(",", "."))
+        self.current_convert_price = float(self.get_currency_price_euro().replace(",", "."))
 
-    def get_currency_price(self):
+    def get_currency_price_euro(self):
         full_page = requests.get(self.EURO_RUB, headers=self.Headers)
 
         soup = BeautifulSoup(full_page.content, "html.parser")
@@ -25,7 +25,7 @@ class Currency:
         return convert[0].text
 
     def check_currency_euro(self):
-        currency = float(self.get_currency_price().replace(",", "."))
+        currency = float(self.get_currency_price_euro().replace(",", "."))
         if currency >= self.current_convert_price + self.difference:
             print("Курс вырос")
             self.send_mail()
@@ -33,7 +33,7 @@ class Currency:
             print("Курс упал")
             self.send_mail()
         print("Cейчас курс: 1 Евро = " + str(currency))
-        time.sleep(3)
+        time.sleep(10)
         self.check_currency_euro()
 
     def send_mail(self):
