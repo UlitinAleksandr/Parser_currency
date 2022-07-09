@@ -5,11 +5,14 @@ import smtplib
 
 
 class Currency:
-    EURO_RUB = "https://www.google.com/search?q=rehc+tdhj&oq"
-    DOLLAR_RUB = "https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%B0"
-    LIRA_RUB = "https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%BB%D0%B8%D1%80%D1%8B"
-    Headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"" Chrome/"
-                             "99.0.4844.51 Safari/537.36"}
+    EURO_RUB = "https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B5%D0%B2%D1%8" \
+               "0%D0%BE+%D0%BA+%D1%80%D1%83%D0%B1%D0%BB%D1%8E"
+    DOLLAR_RUB = "https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%" \
+                 "B0+%D0%BA+%D1%80%D1%83%D0%B1%D0%BB%D1%8E"
+    LIRA_RUB = "https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%BB%D0%B8%D1%80%D1%8B+%D0%BA" \
+               "+%D1%80%D1%83%D0%B1%D0%BB%D1%8E"
+    Headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                             "Chrome/103.0.0.0 Safari/537.36"}
 
     current_convert_price_euro = 0
     difference_euro = 5
@@ -46,7 +49,7 @@ class Currency:
             self.current_convert_price_euro = currency
             self.send_mail("Euro")
 
-        print("Cейчас курс: 1 Евро = " + str(currency))
+        print("Cейчас курс: 1 Евро = " + str(currency) + " рублей")
         time.sleep(3)
 
     def get_currency_price_dollar(self):
@@ -68,7 +71,7 @@ class Currency:
             print(f"Курс доллара упал более чем на {self.difference_dollar} рублей")
             self.send_mail("Dollar")
 
-        print("Cейчас курс: 1 Доллар = " + str(currency))
+        print("Cейчас курс: 1 Доллар = " + str(currency) + " рублей")
         time.sleep(3)
 
     def get_currency_price_lira(self):
@@ -90,7 +93,7 @@ class Currency:
             print(f"Курс Турецкой лиры упал более чем на {self.difference_lira} рублей")
             self.send_mail("Turkish Lira")
 
-        print("Cейчас курс: 1 Турецкая Лира = " + str(currency))
+        print("Cейчас курс: 1 Турецкая Лира = " + str(currency) + " рублей")
         time.sleep(3)
 
     @staticmethod
